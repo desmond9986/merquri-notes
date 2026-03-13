@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# Notes App (Technical Test)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is a mobile application built with **React Native (Expo)** as part of a technical assessment.
 
-## Get started
+The application allows users to create notes, organize them by category, and view a summary of notes.
 
-1. Install dependencies
+The UI implementation follows the provided **Figma design**.
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+# Features
 
-   ```bash
-   npx expo start
-   ```
+• Create new notes with category selection  
+• View recently created notes grouped by category  
+• Summary page displaying number of notes per category  
+• Settings page with app information options  
+• Delete all notes functionality  
+• Persistent local storage using AsyncStorage  
+• Responsive layout for different device sizes  
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+# Tech Stack
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- React Native
+- Expo
+- TypeScript
+- AsyncStorage
+- Expo Router
 
-## Get a fresh project
+---
 
-When you're ready, run:
+# Runtime Environment & SDK VERSION
 
+| Tool | Version |
+|-----|------|
+| Node.js | v18.x |
+| Expo SDK | 54 |
+| React Native | 0.81 |
+| TypeScript | 5.9.2 |
+| Package Manager | npm |
+
+Development Environment:
+
+| Tool | Version |
+|-----|------|
+| Operating System | macOS Sequoia |
+| Xcode | 26.3 |
+| iOS | 26.3 |
+| Android Emulator | API 36 |
+
+---
+
+# Installation
+
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone https://github.com/desmond9986/merquri-notes.git
+```
+2. Install dependencies
+ ```bash
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3. Start the app
+```bash
+npx expo start
+```
+4. Run the application
+```bash
+i → open iOS simulator
+a → open Android emulator
+```
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+# Future Improvements
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Complete remaining screens  
+- Allow editing notes  
+- Allow deleting individual notes  
+- Move all text into a translation file  
+- Add test cases  
+- Standardize padding and spacing into a shared configuration file
