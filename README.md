@@ -8,6 +8,12 @@ The UI implementation follows the provided **Figma design**.
 
 ---
 
+# App Demo
+
+[Watch Demo](./demo.mov)
+
+---
+
 # Features
 
 • Create new notes with category selection  
@@ -57,6 +63,12 @@ Development Environment:
 ```bash
 git clone https://github.com/desmond9986/merquri-notes.git
 ```
+
+2. Navigate into the project folder
+ ```bash
+cd merquri-notes
+```
+
 2. Install dependencies
  ```bash
 npm install
@@ -66,6 +78,7 @@ npm install
 ```bash
 npx expo start
 ```
+
 4. Run the application
 ```bash
 i → open iOS simulator
