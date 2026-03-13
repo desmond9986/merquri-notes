@@ -5,6 +5,7 @@ export const COLORS = {
     PURPLE: 'rgba(199, 36, 225, 1)',
 
     HEADER: 'rgba(40, 9, 71, 1)',
+    BOTTOM_TAB: 'rgba(28, 11, 55, 1)',
 
     BACKGROUND_GRADIENT_1: 'rgba(27, 40, 79, 1)',
     BACKGROUND_GRADIENT_2: 'rgba(53, 17, 89, 1)',
@@ -20,7 +21,4 @@ export const COLORS = {
 
     BUTTON_GRADIENT_1: 'rgba(249, 70, 149, 1)',
     BUTTON_GRADIENT_2: 'rgba(241, 58, 118, 1)',
-    
-    BOTTOM_TAB_GRADIENT_1: 'rgba(28, 11, 55, 1)',
-    BOTTOM_TAB_GRADIENT_2: 'rgba(29, 8, 55, 1)',
   }

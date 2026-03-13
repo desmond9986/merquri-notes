@@ -6,6 +6,7 @@ export default function RootLayout() {
     <RootSiblingParent>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name='(tabs)' />
+        <Stack.Screen name='new-note' />
         <Stack.Screen name='settings' />
       </Stack>
     </RootSiblingParent>
