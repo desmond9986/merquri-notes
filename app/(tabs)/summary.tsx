@@ -66,7 +66,9 @@ const Summary = () => {
 
   const renderSummaryItem = useCallback((item: SummaryItem) => {
     const renderButton = () => (
-      <Pressable>
+      <Pressable onPress={
+        () => Alert.alert('Under Construction', 'Detail page are under construction.')
+      }>
         <LinearGradient
           colors={[COLORS.BUTTON_GRADIENT_1, COLORS.BUTTON_GRADIENT_2]}
           start={{ x: 0, y: 0 }}
@@ -108,15 +110,15 @@ const Summary = () => {
     <GradientScreen style={styles.container}>
       <StatusBar barStyle='light-content' />
       <SafeAreaView edges={['top']} style={{ flex: 1 }}>
-      {renderHeader()}
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.contentContainer}
-      >
-        <View style={styles.summaryCoontainer}>
-          {summaryItems.map((item) => renderSummaryItem(item))}
-        </View>
-      </ScrollView>
+        {renderHeader()}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.contentContainer}
+        >
+          <View style={styles.summaryCoontainer}>
+            {summaryItems.map((item) => renderSummaryItem(item))}
+          </View>
+        </ScrollView>
       </SafeAreaView>
     </GradientScreen>
   );

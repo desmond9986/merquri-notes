@@ -16,7 +16,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 const NewNote = () => {
   const [category, setCategory] = useState<NoteCategory>(NOTE_CATEGORY.EMPTY);
   const [content, setContent] = useState<string>('');
-  
+
   const onButtonPress = useCallback(async () => {
     if (!category && !content.trim()) {
       Alert.alert('Validation Error', 'Please select a category and input note content');
@@ -30,15 +30,15 @@ const NewNote = () => {
     }
     try {
       await addNote(category, content);
-  
+
       setCategory(NOTE_CATEGORY.EMPTY);
       setContent('');
-  
+
       showToast('Note saved successfully');
       router.back();
     } catch (error) {
       console.error('Failed to save note:', error);
-  
+
       Alert.alert(
         'Save Failed',
         'Unable to save your note. Please try again.'
@@ -47,67 +47,67 @@ const NewNote = () => {
   }, [category, content]);
 
   const renderButton = useCallback(() => (
-    <Pressable
-      onPress={onButtonPress}>
-      <LinearGradient
-        colors={[
-          COLORS.BUTTON_GRADIENT_1,
-          COLORS.BUTTON_GRADIENT_2
-        ]}
-        style={styles.saveButton}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-      >
-        <Text style={styles.buttonText}>Save</Text>
-      </LinearGradient>
-    </Pressable>
+
+    <View style={styles.bottomTab}>
+      <Pressable onPress={onButtonPress}>
+        <LinearGradient
+          colors={[COLORS.BUTTON_GRADIENT_1, COLORS.BUTTON_GRADIENT_2]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.saveButton}
+        >
+          <Text style={styles.buttonText}>Save</Text>
+        </LinearGradient>
+      </Pressable>
+    </View>
   ), [onButtonPress]);
 
   const renderDropdown = useCallback(() => (
-      <Dropdown
-        style={styles.dropdown}
-        placeholderStyle={styles.itemStyle}
-        selectedTextStyle={[styles.itemStyle, styles.selectedTextStyle]}
-        containerStyle={styles.dropdownContainer}
-        itemTextStyle={styles.itemTextStyle}
-        activeColor={COLORS.WHITE_10}
-        data={CATEGORY_OPTIONS}
-        labelField='label'
-        valueField='category'
-        placeholder='Choose a category'
-        value={category}
-        onChange={item => {
-          setCategory(item.category)
-        }}
-        renderRightIcon={() => (
-          <Ionicons
-            name='chevron-down'
-            size={24}
-            color={COLORS.WHITE}
-          />
-        )}
-      />
+    <Dropdown
+      style={styles.dropdown}
+      placeholderStyle={styles.itemStyle}
+      selectedTextStyle={[styles.itemStyle, styles.selectedTextStyle]}
+      containerStyle={styles.dropdownContainer}
+      itemTextStyle={styles.itemTextStyle}
+      activeColor={COLORS.WHITE_10}
+      data={CATEGORY_OPTIONS}
+      labelField='label'
+      valueField='category'
+      placeholder='Choose a category'
+      value={category}
+      onChange={item => {
+        setCategory(item.category)
+      }}
+      renderRightIcon={() => (
+        <Ionicons
+          name='chevron-down'
+          size={24}
+          color={COLORS.WHITE}
+        />
+      )}
+    />
   ), [category]);
 
   const renderContentInput = useCallback(() => {
     const isContentMax: boolean = content.length === MAX_NOTE_CHAR_COUNT;
     return (
-    <>
-      <TextInput
-        value={content}
-        onChangeText={setContent}
-        maxLength={MAX_NOTE_CHAR_COUNT}
-        placeholder='Please input note content'
-        placeholderTextColor={COLORS.TEXT_SECONDARY}
-        multiline
-        textAlignVertical='top'
-        style={styles.textInput}
-      />
-      <Text style={[styles.charCount, isContentMax && { color: COLORS.RED }]}>
-        {content.length}/{MAX_NOTE_CHAR_COUNT}
+      <>
+        <TextInput
+          value={content}
+          onChangeText={setContent}
+          maxLength={MAX_NOTE_CHAR_COUNT}
+          placeholder='Please input note content'
+          placeholderTextColor={COLORS.TEXT_SECONDARY}
+          multiline
+          textAlignVertical='top'
+          style={styles.textInput}
+        />
+        <Text style={[styles.charCount, isContentMax && { color: COLORS.RED }]}>
+          {content.length}/{MAX_NOTE_CHAR_COUNT}
         </Text>
-    </>
-  )}, [content]);
+      </>
+    )
+  }, [content]);
 
   const renderNoteInputContainer = useCallback(() => (
     <View style={styles.noteInputContainer}>
@@ -120,12 +120,12 @@ const NewNote = () => {
     <GradientScreen
       style={styles.gradientScreen}
     >
-      <ScreenHeader title='New Note' showBack={true}/>
+      <ScreenHeader title='New Note' showBack={true} />
       <StatusBar barStyle='light-content' />
       <View style={styles.container}>
-      {renderNoteInputContainer()}
-      {renderButton()}
+        {renderNoteInputContainer()}
       </View>
+      {renderButton()}
     </GradientScreen>
   );
 }
@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 26,
-    justifyContent: 'space-between',
   },
   noteInputContainer: {
     gap: 16,
@@ -189,7 +188,6 @@ const styles = StyleSheet.create({
     color: COLORS.TEXT_SECONDARY,
   },
   saveButton: {
-    paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 16,
     alignItems: 'center',
@@ -198,6 +196,14 @@ const styles = StyleSheet.create({
     color: COLORS.TEXT_PRIMARY,
     fontSize: 14,
     fontWeight: '600'
+  },
+  bottomTab: {
+    backgroundColor: COLORS.BOTTOM_TAB,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    height: 100,
+    paddingHorizontal: 84,
+    justifyContent: 'center',
   },
 });
 

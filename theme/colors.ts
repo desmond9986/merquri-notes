@@ -3,6 +3,7 @@ export const COLORS = {
     WHITE_10: 'rgba(255, 255, 255, 0.1)',
     RED: 'rgba(255, 0, 0, 1)',
     PURPLE: 'rgba(199, 36, 225, 1)',
+    PINK: 'rgba(249, 70, 149, 1)',
 
     HEADER: 'rgba(40, 9, 71, 1)',
     BOTTOM_TAB: 'rgba(28, 11, 55, 1)',

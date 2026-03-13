@@ -50,3 +50,12 @@ export async function addNote(
 
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
 }
+
+/**
+ * Clears all notes stored in AsyncStorage.
+ * @returns A promise that resolves when all notes have been successfully removed from AsyncStorage.
+ * This function removes the storage key associated with the notes, effectively deleting all stored notes.
+ */
+export async function clearNotes(): Promise<void> {
+    await AsyncStorage.removeItem(STORAGE_KEY)
+  }

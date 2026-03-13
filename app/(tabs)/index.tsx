@@ -1,4 +1,4 @@
-import { useFocusEffect } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Alert, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 
@@ -84,7 +84,7 @@ const HomeScreen = () => {
         title='Home'
         rightIcon='settings-outline'
         onRightPress={
-          () => Alert.alert('Settings', 'Settings page is under construction.')
+          () => router.push('/settings')
         }
       />
       <StatusBar barStyle='light-content' />
