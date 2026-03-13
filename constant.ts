@@ -1,7 +1,7 @@
 export const NOTE_CATEGORY = {
     WORK: 'Work and Study',
     LIFE: 'Life',
-    HEALTH: 'Health and Well-being',
+    HEALTH: 'Health and Wellness',
     EMPTY: '',
   } as const;
 
