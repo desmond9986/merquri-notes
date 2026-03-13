@@ -1,23 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
 
 import { COLORS } from '@/theme/colors';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 type SectionHeaderProps = {
   title: string,
-  icon: keyof typeof Ionicons.glyphMap,
+  image: ImageSourcePropType,
 }
 
-const SectionHeader = (props: SectionHeaderProps) => {
+const SectionHeader = ({title, image}: SectionHeaderProps) => {
   return (
     <View style={styles.container}>
-      <Ionicons
-        name={props.icon}
-        size={18}
-        color={COLORS.TEXT_SECONDARY}
-      />
+      <Image source={image} style={styles.image} />
       <Text style={styles.title}>
-        {props.title}
+        {title}
       </Text>
     </View>
   );
@@ -36,5 +31,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     color: COLORS.TEXT_PRIMARY,
+  },
+  image: {
+    width: 20,
+    height: 20,
   },
 });

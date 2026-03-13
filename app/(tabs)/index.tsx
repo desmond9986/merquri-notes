@@ -1,6 +1,6 @@
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Alert, ImageSourcePropType, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 import GradientScreen from '@/components/GradientScreen';
 import NoteCard from '@/components/NoteCard';
@@ -11,6 +11,11 @@ import { getNotes } from '@/services/noteService';
 import { COLORS } from '@/theme/colors';
 import { Note } from '@/types/note';
 import Ionicons from '@expo/vector-icons/Ionicons';
+
+const WorkImage = require('@/assets/images/homeWork.png');
+const LifeImage = require('@/assets/images/homeLife.png');
+const HealthImage = require('@/assets/images/homeHealth.png');
+const SettingImage = require('@/assets/images/setting.png');
 
 const HomeScreen = () => {
   const [notes, setNotes] = useState<Note[]>([]);
@@ -43,6 +48,19 @@ const HomeScreen = () => {
     .filter((note) => note.category === NOTE_CATEGORY.HEALTH)
     .slice(0, 3);
 
+    const hasNotes = notes.length > 0;
+    const EmptyState = () => {
+      return (
+        <View style={styles.emptyContainer}>
+          <Ionicons name='document-outline' size={60} color={COLORS.TEXT_TERTIARY} />
+          <Text style={styles.emptyTitle}>No notes yet</Text>
+          <Text style={styles.emptySubtitle}>
+            Tap middle icon below to create your first note.
+          </Text>
+        </View>
+      )
+    }
+
   const renderHeader = useCallback(() => {
     return (
       <View style={styles.header}>
@@ -58,7 +76,7 @@ const HomeScreen = () => {
     )
   }, []);
 
-  const renderSection = useCallback((title: string, icon: keyof typeof Ionicons.glyphMap, notes: Note[]) => {
+  const renderSection = useCallback((title: string, image: ImageSourcePropType, notes: Note[]) => {
     if (!notes.length) {
       return null;
     }
@@ -67,7 +85,7 @@ const HomeScreen = () => {
       <>
         <SectionHeader
           title={title}
-          icon={icon}
+          image={image}
         />
         <View style={styles.noteContainer}>
           {notes.map((note) => (
@@ -82,7 +100,7 @@ const HomeScreen = () => {
     <GradientScreen style={styles.container}>
       <ScreenHeader
         title='Home'
-        rightIcon='settings-outline'
+        rightImage={SettingImage}
         onRightPress={
           () => router.push('/settings')
         }
@@ -93,9 +111,15 @@ const HomeScreen = () => {
         contentContainerStyle={styles.contentContainer}
       >
         {renderHeader()}
-        {renderSection(NOTE_CATEGORY.WORK, 'add', workNotes)}
-        {renderSection(NOTE_CATEGORY.LIFE, 'add', lifeNotes)}
-        {renderSection(NOTE_CATEGORY.HEALTH, 'add', healthNotes)}
+        {hasNotes ? (
+          <>
+        {renderSection(NOTE_CATEGORY.WORK, WorkImage, workNotes)}
+        {renderSection(NOTE_CATEGORY.LIFE, LifeImage, lifeNotes)}
+        {renderSection(NOTE_CATEGORY.HEALTH, HealthImage, healthNotes)}
+        </>
+        ):(
+          <EmptyState />
+        )}
       </ScrollView>
     </GradientScreen>
   );
@@ -127,6 +151,25 @@ const styles = StyleSheet.create({
   },
   noteContainer: {
     gap: 11
+  },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 100,
+  },
+  emptyTitle: {
+    marginTop: 16,
+    fontSize: 20,
+    fontWeight: '600',
+    color: COLORS.TEXT_PRIMARY,
+  },
+  emptySubtitle: {
+    marginTop: 8,
+    fontSize: 14,
+    color: COLORS.TEXT_TERTIARY,
+    textAlign: 'center',
+    paddingHorizontal: 40,
   },
 });
 

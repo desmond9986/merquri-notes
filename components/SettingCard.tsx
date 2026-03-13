@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.BORDER,
   },
   image: {
-    width: 24,
-    height: 24,
+    width: 18,
+    height: 18,
   },
   leftContainer: {
     flexDirection: 'row',

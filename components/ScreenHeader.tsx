@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Image, ImageSourcePropType, Pressable, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { COLORS } from '@/theme/colors'
@@ -8,14 +8,14 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 type Props = {
   title: string
   showBack?: boolean
-  rightIcon?: keyof typeof Ionicons.glyphMap
+  rightImage?: ImageSourcePropType
   onRightPress?: () => void
 }
 
 const ScreenHeader = ({
   title,
   showBack,
-  rightIcon,
+  rightImage,
   onRightPress
 }: Props) => {
   const router = useRouter()
@@ -27,18 +27,18 @@ const ScreenHeader = ({
           <Pressable onPress={() => router.back()}>
             <Ionicons name='chevron-back' size={24} color={COLORS.WHITE} />
           </Pressable>
-        ) }
+        )}
 
         <Text style={styles.title}>{title}</Text>
-        </View>
+      </View>
     );
   };
 
   const renderRightIcon = () => {
-    if (rightIcon && onRightPress) {
+    if (rightImage && onRightPress) {
       return (
         <Pressable onPress={onRightPress} >
-          <Ionicons name={rightIcon} size={24} color={COLORS.PURPLE} />
+          <Image source={rightImage} style={styles.image} />
         </Pressable>
       );
     }
@@ -49,10 +49,10 @@ const ScreenHeader = ({
     <View style={styles.container}>
       <SafeAreaView edges={['top']}>
         <View style={styles.headerContainer} >
-        {renderBackAndTitle()}
-        {renderRightIcon()}
+          {renderBackAndTitle()}
+          {renderRightIcon()}
         </View>
-        
+
       </SafeAreaView>
     </View>
   );
@@ -75,6 +75,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+  },
+  image: {
+    width: 24,
+    height: 24,
   },
   title: {
     fontSize: 24,

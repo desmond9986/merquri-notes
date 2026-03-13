@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text } from 'react-native';
 
 import { MAX_NOTE_CARD_CHAR_COUNT } from '@/constant';
 import { COLORS } from '@/theme/colors';
@@ -14,12 +14,13 @@ const NoteCard = (props: NoteCardProps) => {
     props.text;
 
   return (
-    <Pressable style={styles.card}>
+    <Pressable style={styles.card} onPress={
+      () => Alert.alert('Under Construction', 'Note detail page is under construction.')}>
       <Text style={styles.text}>{truncatedText}</Text>
       <Ionicons
         name="chevron-forward"
         size={18}
-        color={COLORS.TEXT_SECONDARY}
+        color={COLORS.PINK}
       />
     </Pressable>
   );
