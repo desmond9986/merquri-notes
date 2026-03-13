@@ -1,28 +1,28 @@
-import { Tabs } from "expo-router";
+import { Tabs } from 'expo-router';
 
 export default function TabLayout() {
     return (
         <Tabs>
             <Tabs.Screen
-                name="index"
+                name='index'
                 options={{
-                    headerTitle: "Home",
-                    title: "Home",
+                    headerTitle: 'Home',
+                    title: 'Home',
                 }
                 }
             />
             <Tabs.Screen
-                name="new-note"
+                name='new-note'
                 options={{
-                    headerTitle: "New Note",
-                    title: "New Note",
+                    headerTitle: 'New Note',
+                    title: 'New Note',
                 }
                 }
             />
             <Tabs.Screen
-                name="summary"
+                name='summary'
                 options={{
-                    title: "Summary",
+                    title: 'Summary',
                 }}
             />
         </Tabs>
