@@ -2,6 +2,9 @@ export const COLORS = {
     WHITE: 'rgba(255, 255, 255, 1)',
     WHITE_10: 'rgba(255, 255, 255, 0.1)',
     RED: 'rgba(255, 0, 0, 1)',
+    PURPLE: 'rgba(199, 36, 225, 1)',
+
+    HEADER: 'rgba(40, 9, 71, 1)',
 
     BACKGROUND_GRADIENT_1: 'rgba(27, 40, 79, 1)',
     BACKGROUND_GRADIENT_2: 'rgba(53, 17, 89, 1)',

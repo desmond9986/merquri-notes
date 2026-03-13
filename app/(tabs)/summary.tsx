@@ -1,7 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Image, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import GradientScreen from '@/components/GradientScreen';
 import { NOTE_CATEGORY } from '@/constant';
@@ -105,6 +106,8 @@ const Summary = () => {
 
   return (
     <GradientScreen style={styles.container}>
+      <StatusBar barStyle='light-content' />
+      <SafeAreaView edges={['top']} style={{ flex: 1 }}>
       {renderHeader()}
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -114,6 +117,7 @@ const Summary = () => {
           {summaryItems.map((item) => renderSummaryItem(item))}
         </View>
       </ScrollView>
+      </SafeAreaView>
     </GradientScreen>
   );
 };

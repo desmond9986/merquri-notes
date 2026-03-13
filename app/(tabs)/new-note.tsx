@@ -1,10 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Pressable, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 
 import GradientScreen from '@/components/GradientScreen';
+import ScreenHeader from '@/components/ScreenHeader';
 import { CATEGORY_OPTIONS, MAX_NOTE_CHAR_COUNT, NOTE_CATEGORY } from '@/constant';
 import { addNote } from '@/services/noteService';
 import { COLORS } from '@/theme/colors';
@@ -15,6 +16,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 const NewNote = () => {
   const [category, setCategory] = useState<NoteCategory>(NOTE_CATEGORY.EMPTY);
   const [content, setContent] = useState<string>('');
+  
   const onButtonPress = useCallback(async () => {
     if (!category && !content.trim()) {
       Alert.alert('Validation Error', 'Please select a category and input note content');
@@ -116,15 +118,22 @@ const NewNote = () => {
 
   return (
     <GradientScreen
-      style={styles.container}
+      style={styles.gradientScreen}
     >
+      <ScreenHeader title='New Note' showBack={true}/>
+      <StatusBar barStyle='light-content' />
+      <View style={styles.container}>
       {renderNoteInputContainer()}
       {renderButton()}
+      </View>
     </GradientScreen>
   );
 }
 
 const styles = StyleSheet.create({
+  gradientScreen: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     paddingHorizontal: 16,

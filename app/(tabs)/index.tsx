@@ -1,9 +1,10 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 import GradientScreen from '@/components/GradientScreen';
 import NoteCard from '@/components/NoteCard';
+import ScreenHeader from '@/components/ScreenHeader';
 import SectionHeader from '@/components/SectionHeader';
 import { NOTE_CATEGORY } from '@/constant';
 import { getNotes } from '@/services/noteService';
@@ -79,6 +80,14 @@ const HomeScreen = () => {
 
   return (
     <GradientScreen style={styles.container}>
+      <ScreenHeader
+        title='Home'
+        rightIcon='settings-outline'
+        onRightPress={
+          () => Alert.alert('Settings', 'Settings page is under construction.')
+        }
+      />
+      <StatusBar barStyle='light-content' />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
@@ -95,7 +104,6 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
   },
   header: {
     flexDirection: 'row',
@@ -115,6 +123,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingBottom: 50,
+    paddingHorizontal: 16
   },
   noteContainer: {
     gap: 11
